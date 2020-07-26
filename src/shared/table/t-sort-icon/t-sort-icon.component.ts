@@ -9,6 +9,7 @@ import {
 
 import { SortDirection } from "../types";
 import { getNextDirection } from "../utils";
+import { ArrowDirection } from "../../components/arrow/arrowType";
 
 @Component({
   selector: 't-sort-icon',
@@ -24,6 +25,8 @@ export class TSortIcon {
   currentDirection = SortDirection.None;
 
   constructor(private cdr: ChangeDetectorRef) {}
+
+  get arrowDirectionEnum() { return ArrowDirection; }
 
   onSortChangeWrapper = () => {
     this.currentDirection = getNextDirection(this.currentDirection);
