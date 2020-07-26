@@ -4,4 +4,4 @@ export enum SortDirection {
   None = '',
 }
 
-export type SortResult = { column: string, direction: SortDirection };
+export type TableSort = { column: string, direction: SortDirection };
