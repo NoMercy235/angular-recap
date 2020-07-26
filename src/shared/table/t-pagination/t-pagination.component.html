@@ -3,8 +3,8 @@
     Entries: {{pagination.total}}
   </div>
   <div class="pages-container">
-    <arrow [disabled]="isFirstPage()" [direction]="arrowDirectionEnum.Left"></arrow>
+    <arrow [disabled]="isFirstPage()" [direction]="arrowDirectionEnum.Left" (click)="onPreviousPage()"></arrow>
     <span>{{pagination.page}}</span>
-    <arrow [disabled]="isLastPage()" [direction]="arrowDirectionEnum.Right"></arrow>
+    <arrow [disabled]="isLastPage()" [direction]="arrowDirectionEnum.Right" (click)="onNextPage()"></arrow>
   </div>
 </div>

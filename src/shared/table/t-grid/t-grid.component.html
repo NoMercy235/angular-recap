@@ -10,10 +10,10 @@
     </div>
   </div>
 
-  <div class="row" *ngFor="let row of data">
+  <div class="row" *ngFor="let row of getData()">
     <div class="column" *ngFor="let column of columns.toArray()">
       {{row[column.property]}}
     </div>
   </div>
 </div>
-<t-pagination *ngIf="pagination" [pagination]="pagination"></t-pagination>
+<t-pagination *ngIf="pageSize" [pagination]="pagination" (onPaginationChange)="onPaginationChange($event)"></t-pagination>
