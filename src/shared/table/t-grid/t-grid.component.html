@@ -1,4 +1,10 @@
 <div class="container">
+  <div class="row">
+    <div class="column" *ngFor="let column of columns.toArray()">
+      {{column.name}}
+    </div>
+  </div>
+
   <div class="row" *ngFor="let row of data">
     <div class="column" *ngFor="let column of columns.toArray()">
       {{row[column.property]}}
