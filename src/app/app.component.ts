@@ -8,7 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ui-path';
 
-  testClick = () => {
-    console.log('Clicked');
+  tableData = [
+    { id: 1, name: 'test' },
+    { id: 2, name: 'test2' },
+  ]
+
+  addData = () => {
+    this.tableData = [...this.tableData, { id: 3, name: 'test3' }]
   };
 }

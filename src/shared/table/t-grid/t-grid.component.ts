@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 't-grid',
-  template: `
-    <div>t-grid</div>
-  `,
+  templateUrl: './t-grid.component.html',
+  styleUrls: ['./t-grid.component.scss'],
+  encapsulation: ViewEncapsulation.ShadowDom,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TGrid {
+export class TGrid<T> {
+  @Input() data: T;
+
+  @Output() sortChange?: () => {};
+  @Output() paginationChange?: () => {};
 }
