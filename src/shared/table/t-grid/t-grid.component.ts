@@ -5,6 +5,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnInit,
   Output,
   QueryList,
   ViewChildren
@@ -19,7 +20,7 @@ import { TSortIcon } from "../t-sort-icon/t-sort-icon.component";
   styleUrls: ['./t-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TGrid<T> implements OnChanges {
+export class TGrid<T> implements OnInit, OnChanges {
   @Input() data: T[];
   @Input() sortable?: boolean = false;
   @Input() pageSize?: number;
@@ -33,8 +34,20 @@ export class TGrid<T> implements OnChanges {
   sort: TableSort;
   pagination: TablePagination;
 
-  ngOnChanges () {
-    this.pageSize && this.setPagination(1);
+  ngOnInit () {
+    if (!this.pageSize) return;
+    this.pagination = {
+      page: 1,
+      pageSize: this.pageSize,
+      total: this.data.length,
+    };
+  }
+
+  ngOnChanges (changes) {
+    const { data: { previousValue, currentValue } } = changes;
+    if (previousValue !== currentValue) {
+      this.setPagination({ ...this.pagination, total: currentValue.length });
+    }
   }
 
   getSortedData = (data: T[]) => {
@@ -72,16 +85,12 @@ export class TGrid<T> implements OnChanges {
     return this.sortable && column.sortable;
   };
 
-  setPagination = (page) => {
-    this.pagination = {
-      total: this.data.length,
-      page: page,
-      pageSize: this.pageSize,
-    };
+  setPagination = (pagination) => {
+    this.pagination = pagination;
   };
 
   onPaginationChange = (pagination: TablePagination) => {
     this.paginationChange.emit(pagination);
-    this.setPagination(pagination.page);
+    this.pagination = pagination;
   };
 }

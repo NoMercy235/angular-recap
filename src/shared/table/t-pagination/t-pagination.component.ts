@@ -30,4 +30,10 @@ export class TPagination {
     const newPagination = { ...this.pagination, page: this.pagination.page + 1 };
     this.onPaginationChange.emit(newPagination);
   };
+
+  onPageSizeChange = (event) => {
+    const { target: { value } } = event;
+    const newPagination = { ...this.pagination, pageSize: +value };
+    this.onPaginationChange.emit(newPagination);
+  };
 }
