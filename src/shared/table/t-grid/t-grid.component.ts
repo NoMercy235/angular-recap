@@ -24,6 +24,7 @@ export class TGrid<T> implements OnInit, OnChanges {
   @Input() data: T[];
   @Input() sortable?: boolean = false;
   @Input() pageSize?: number;
+  @Input() initialPage: number = 1;
 
   @Output() sortChange?: EventEmitter<TableSort> = new EventEmitter();
   @Output() paginationChange?: EventEmitter<TablePagination> = new EventEmitter();
@@ -37,7 +38,7 @@ export class TGrid<T> implements OnInit, OnChanges {
   ngOnInit () {
     if (!this.pageSize) return;
     this.pagination = {
-      page: 1,
+      page: this.initialPage,
       pageSize: this.pageSize,
       total: this.data.length,
     };
