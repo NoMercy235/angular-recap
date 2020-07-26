@@ -1,4 +1,4 @@
-<t-grid [data]="tableData" (sortChange)="onSortChange($event)" [sortable]="true">
+<t-grid [data]="tableData" (sortChange)="onSortChange($event)" [sortable]="true" [pagination]="pagination">
   <t-column name="id column" property="id" [sortable]="true"></t-column>
   <t-column name="name column" property="name" [sortable]="true"></t-column>
 </t-grid>

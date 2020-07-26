@@ -9,7 +9,7 @@ import {
   ViewChildren
 } from '@angular/core';
 import { TColumn } from "../t-column/t-column.component";
-import { SortDirection } from "../types";
+import { SortDirection, TablePagination } from "../types";
 import { TSortIcon } from "../t-sort-icon/t-sort-icon.component";
 
 @Component({
@@ -21,6 +21,7 @@ import { TSortIcon } from "../t-sort-icon/t-sort-icon.component";
 export class TGrid<T> {
   @Input() data: T;
   @Input() sortable?: boolean = false;
+  @Input() pagination?: TablePagination;
 
   @Output() sortChange?: EventEmitter<any> = new EventEmitter();
   @Output() paginationChange?: EventEmitter<any> = new EventEmitter();
