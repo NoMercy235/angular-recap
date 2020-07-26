@@ -44,7 +44,7 @@ export class TGrid<T> implements OnInit, OnChanges {
   }
 
   ngOnChanges (changes) {
-    const { data: { previousValue, currentValue } } = changes;
+    const { previousValue, currentValue } = changes.data || {};
     if (previousValue !== currentValue) {
       this.setPagination({ ...this.pagination, total: currentValue.length });
     }
