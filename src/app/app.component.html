@@ -1,4 +1,4 @@
-<t-grid [data]="tableData">
+<t-grid [data]="tableData" (sortChange)="onSortChange($event)">
   <t-column name="id column" property="id"></t-column>
   <t-column name="name column" property="name"></t-column>
 </t-grid>

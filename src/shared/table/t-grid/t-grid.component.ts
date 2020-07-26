@@ -2,12 +2,14 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  EventEmitter,
   Input,
   Output,
   QueryList,
   ViewEncapsulation
 } from '@angular/core';
 import { TColumn } from "../t-column/t-column.component";
+import { SortDirection } from "../utils";
 
 @Component({
   selector: 't-grid',
@@ -18,9 +20,14 @@ import { TColumn } from "../t-column/t-column.component";
 })
 export class TGrid<T> {
   @Input() data: T;
+  @Input() sortable: boolean;
 
-  @Output() sortChange?: () => {};
-  @Output() paginationChange?: () => {};
+  @Output() sortChange?: EventEmitter<any> = new EventEmitter();
+  @Output() paginationChange?: EventEmitter<any> = new EventEmitter();
 
   @ContentChildren(TColumn) columns: QueryList<TColumn<T>>;
+
+  onSortChange = (column: keyof T, direction: SortDirection) => {
+    this.sortChange.emit({ column, direction });
+  };
 }

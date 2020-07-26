@@ -10,5 +10,5 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
 export class TColumn<T> {
   @Input() name: string;
   @Input() property: keyof T;
-  @Input() sortable?: boolean;
+  @Input() sortable?: boolean = false;
 }

@@ -16,4 +16,8 @@ export class AppComponent {
   addData = () => {
     this.tableData = [...this.tableData, { id: 3, name: 'test3' }]
   };
+
+  onSortChange = (newSort) => {
+    console.log(newSort);
+  };
 }
