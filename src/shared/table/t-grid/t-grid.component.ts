@@ -9,7 +9,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { TColumn } from "../t-column/t-column.component";
-import { SortDirection } from "../utils";
+import { SortDirection } from "../types";
 
 @Component({
   selector: 't-grid',

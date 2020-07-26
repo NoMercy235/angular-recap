@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { SortDirection } from "../utils";
+import { SortDirection } from "../types";
+import { getNextDirection } from "../utils";
 
 @Component({
   selector: 't-sort-icon',
@@ -13,7 +14,7 @@ export class TSortIcon {
   currentDirection = SortDirection.None;
 
   onSortChangeWrapper = () => {
-    this.currentDirection = SortDirection.Ascending;
+    this.currentDirection = getNextDirection(this.currentDirection);
     this.onSortChange.emit(this.currentDirection)
   };
 }
