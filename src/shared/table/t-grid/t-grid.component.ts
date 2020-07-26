@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input, Output, ViewEncapsulation } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  Input,
+  Output,
+  QueryList,
+  ViewEncapsulation
+} from '@angular/core';
+import { TColumn } from "../t-column/t-column.component";
 
 @Component({
   selector: 't-grid',
@@ -12,4 +21,6 @@ export class TGrid<T> {
 
   @Output() sortChange?: () => {};
   @Output() paginationChange?: () => {};
+
+  @ContentChildren(TColumn) columns: QueryList<TColumn<T>>;
 }
