@@ -2,7 +2,7 @@
   <div class="row header">
     <div class="column header" *ngFor="let column of columns.toArray()">
       <span>{{column.name}}</span>
-      <t-sort-icon (onSortChange)="onSortChange(column.property, $event)"></t-sort-icon>
+      <t-sort-icon *ngIf="isSortable(column)" (onSortChange)="onSortChange(column.property, $event)"></t-sort-icon>
     </div>
   </div>
 

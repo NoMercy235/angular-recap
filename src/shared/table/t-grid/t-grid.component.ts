@@ -28,4 +28,8 @@ export class TGrid<T> {
   onSortChange = (column: keyof T, direction: SortDirection) => {
     this.sortChange.emit({ column, direction });
   };
+
+  isSortable = (column: TColumn<T>) => {
+    return this.sortable && column.sortable;
+  };
 }
