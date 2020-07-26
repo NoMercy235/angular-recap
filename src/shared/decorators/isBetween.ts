@@ -8,8 +8,8 @@ export function isBetween({ min, max, strict }: IRange = { strict: false }) {
   return (target, prop, newVal) => {
     let isValid = true;
 
-    if (min !== undefined && ((newVal < min) && strict) || (newVal <= min && !strict)) isValid = false;
-    if (max !== undefined && ((newVal > max) && strict) || (newVal >= min && !strict)) isValid = false;
+    if (min !== undefined && (((newVal < min) && strict) || ((newVal <= min) && !strict))) isValid = false;
+    if (max !== undefined && (((newVal > max) && strict) || ((newVal >= max) && !strict))) isValid = false;
 
     if (isValid) return;
 
