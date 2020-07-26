@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 
 import { SortDirection } from "../types";
 import { getNextDirection } from "../utils";
@@ -11,9 +18,12 @@ import { getNextDirection } from "../utils";
 })
 
 export class TSortIcon {
+  @Input() property: string;
   @Output() onSortChange: EventEmitter<SortDirection> = new EventEmitter();
 
   currentDirection = SortDirection.None;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   onSortChangeWrapper = () => {
     this.currentDirection = getNextDirection(this.currentDirection);
@@ -23,4 +33,9 @@ export class TSortIcon {
   isDirectionNone = () => this.currentDirection === SortDirection.None;
   isDirectionAsc = () => this.currentDirection === SortDirection.Ascending;
   isDirectionDsc = () => this.currentDirection === SortDirection.Descending;
+
+  reset = () => {
+    this.currentDirection = SortDirection.None;
+    this.cdr.detectChanges();
+  };
 }

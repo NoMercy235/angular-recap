@@ -5,10 +5,12 @@ import {
   EventEmitter,
   Input,
   Output,
-  QueryList
+  QueryList,
+  ViewChildren
 } from '@angular/core';
 import { TColumn } from "../t-column/t-column.component";
 import { SortDirection } from "../types";
+import { TSortIcon } from "../t-sort-icon/t-sort-icon.component";
 
 @Component({
   selector: 't-grid',
@@ -18,15 +20,19 @@ import { SortDirection } from "../types";
 })
 export class TGrid<T> {
   @Input() data: T;
-  @Input() sortable: boolean;
+  @Input() sortable?: boolean = false;
 
   @Output() sortChange?: EventEmitter<any> = new EventEmitter();
   @Output() paginationChange?: EventEmitter<any> = new EventEmitter();
 
   @ContentChildren(TColumn) columns: QueryList<TColumn<T>>;
+  @ViewChildren(TSortIcon) icons: QueryList<TSortIcon>;
 
-  onSortChange = (column: keyof T, direction: SortDirection) => {
-    this.sortChange.emit({ column, direction });
+  onSortChange = (column: TColumn<T>, direction: SortDirection) => {
+    this.icons
+      .filter(icon => icon.property !== column.property)
+      .forEach(icon => icon.reset());
+    this.sortChange.emit({ column: column.name, direction });
   };
 
   isSortable = (column: TColumn<T>) => {
