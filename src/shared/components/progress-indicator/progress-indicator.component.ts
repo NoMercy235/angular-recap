@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { validateInput } from "../../decorators/validateInput";
 import { isBetween } from "../../decorators/isBetween";
 
@@ -6,6 +6,7 @@ import { isBetween } from "../../decorators/isBetween";
   selector: 'progress-indicator',
   templateUrl: './progress-indicator.component.html',
   styleUrls: ['./progress-indicator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProgressIndicator {
   @validateInput(isBetween({ min: 50 }))

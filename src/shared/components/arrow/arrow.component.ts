@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ArrowDirection } from "./arrowType";
 
 @Component({
   selector: 'arrow',
   templateUrl: './arrow.component.html',
   styleUrls: ['./arrow.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class Arrow {

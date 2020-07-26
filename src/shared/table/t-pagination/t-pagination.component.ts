@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TablePagination } from "../types";
 import { ArrowDirection } from "../../components/arrow/arrowType";
 
 @Component({
   selector: 't-pagination',
   templateUrl: './t-pagination.component.html',
-  styleUrls: ['./t-pagination.component.scss']
+  styleUrls: ['./t-pagination.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class TPagination {
