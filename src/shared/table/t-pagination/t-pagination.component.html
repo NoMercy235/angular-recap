@@ -5,9 +5,9 @@
   <div class="pages-container">
     <span>Items per page: </span>
     <select [value]="pagination.pageSize" (change)="onPageSizeChange($event)">
-      <option>3</option>
       <option>5</option>
       <option>10</option>
+      <option>50</option>
     </select>
     <arrow [disabled]="isFirstPage()" [direction]="arrowDirectionEnum.Left" (click)="onPreviousPage()"></arrow>
     <span>{{pagination.page}}</span>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from "../models/User";
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ui-path';
 
-  tableData = new Array(50).fill(0).map((el, index) => {
-    return { id: index, name: `test-${index}`};
+  tableData = new Array(50).fill(0).map(() => {
+    return new User();
   });
 
   addData = () => {
-    this.tableData = [...this.tableData, { id: 3, name: 'test3' }]
+    this.tableData = [...this.tableData, new User()];
   };
 
   onSortChange = (newSort) => {
