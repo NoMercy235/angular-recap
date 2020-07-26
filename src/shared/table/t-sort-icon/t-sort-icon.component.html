@@ -1,1 +1,12 @@
-<span (click)="onSortChangeWrapper()">sort</span>
+<span class="arrow-container" (click)="onSortChangeWrapper()">
+  <span *ngIf="isDirectionNone()" class="sort-none-container">
+    <span class="arrow up"></span>
+    <span class="arrow down"></span>
+  </span>
+  <span *ngIf="isDirectionAsc()">
+    <span class="arrow up"></span>
+  </span>
+  <span *ngIf="isDirectionDsc()">
+    <span class="arrow down"></span>
+  </span>
+</span>

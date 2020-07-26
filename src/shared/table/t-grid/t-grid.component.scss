@@ -6,6 +6,34 @@
 
     .column {
       flex: 1;
+      padding: 8px 4px;
+
+      &.header {
+        display: flex;
+        align-items: center;
+
+        > span:first-child {
+          flex: 1;
+          font-weight: bold;
+          font-size: large;
+        }
+      }
+
+      &:not(:last-of-type) {
+        border-right: 1px solid black;
+      }
+    }
+
+    &:not(:last-of-type) {
+      border-bottom: 1px solid black;
+    }
+
+    &:nth-child(2n) {
+      background-color: #eee;
+    }
+
+    &:not(.header):hover {
+      background-color: #ccc;
     }
   }
 }

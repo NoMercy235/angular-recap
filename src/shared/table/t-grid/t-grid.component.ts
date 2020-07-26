@@ -5,8 +5,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  QueryList,
-  ViewEncapsulation
+  QueryList
 } from '@angular/core';
 import { TColumn } from "../t-column/t-column.component";
 import { SortDirection } from "../types";
@@ -15,7 +14,6 @@ import { SortDirection } from "../types";
   selector: 't-grid',
   templateUrl: './t-grid.component.html',
   styleUrls: ['./t-grid.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TGrid<T> {

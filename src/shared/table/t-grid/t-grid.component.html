@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
-    <div class="column" *ngFor="let column of columns.toArray()">
-      {{column.name}}
+  <div class="row header">
+    <div class="column header" *ngFor="let column of columns.toArray()">
+      <span>{{column.name}}</span>
       <t-sort-icon (onSortChange)="onSortChange(column.property, $event)"></t-sort-icon>
     </div>
   </div>
