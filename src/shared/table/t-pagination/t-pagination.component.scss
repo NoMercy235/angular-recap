@@ -1,7 +1,18 @@
 .container {
   display: flex;
+  padding: 8px;
+  font-size: large;
 
   .entries-container {
     flex: 1;
+  }
+
+  .pages-container {
+    display: flex;
+    align-items: center;
+
+    & > *:not(:last-child) {
+      padding-right: 8px;
+    }
   }
 }

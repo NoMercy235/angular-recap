@@ -9,6 +9,7 @@ import { ArrowDirection } from "./arrowType";
 
 export class Arrow {
   @Input() direction: ArrowDirection;
+  @Input() disabled?: boolean = false;
 
   isDirectionUp = () => this.direction === ArrowDirection.Up;
   isDirectionRight = () => this.direction === ArrowDirection.Right;
