@@ -1,7 +1,30 @@
-<div
-  class="container"
-  [style.width.px]="getWidth()"
-  [style.height.px]="getHeight()"
-  [style.backgroundColor]="'red'"
+<svg
+  [style.width]="getWidth()"
+  [style.height]="getHeight()"
 >
-</div>
+  <text
+    [attr.x]="radius - 10"
+    [attr.y]="radius"
+  >
+    {{progress + '%'}}
+  </text>
+  <circle
+    [attr.r]="getRadius()"
+    [attr.cx]="radius"
+    [attr.cy]="radius"
+    fill="transparent"
+    stroke="#d2d3d4"
+    stroke-width="4"
+  />
+  <circle
+    class="progress-ring"
+    [attr.r]="getRadius()"
+    [attr.cx]="radius"
+    [attr.cy]="radius"
+    fill="transparent"
+    [attr.stroke]="color"
+    stroke-width="4"
+    [attr.stroke-dasharray]="getCircumference()"
+    [attr.stroke-dashoffset]="getVisibleProgress()"
+  />
+</svg>

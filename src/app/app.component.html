@@ -1,4 +1,8 @@
-<progress-indicator [progress]="50" [radius]="60" color="red"></progress-indicator>
+<progress-indicator
+  [progress]="progress$.value"
+  [radius]="50"
+  color="red"
+></progress-indicator>
 
 <button id="addUserBtn" (click)="addData()">Add user</button>
 

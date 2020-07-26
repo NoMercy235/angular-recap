@@ -18,4 +18,10 @@ export class ProgressIndicator {
 
   getHeight = () => this.radius * 2;
   getWidth = () => this.radius * 2;
+  getRadius = () => this.radius - 4;
+  getCircumference = () => this.getRadius() * 2 * Math.PI;
+  getVisibleProgress = () => {
+    const c = this.getCircumference()
+    return c - this.progress / 100 * c;
+  };
 }
